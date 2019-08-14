@@ -4,7 +4,9 @@
 		<div class="card-body">
 			<h5 class="text-center card-title">{{ product.title }}</h5>
 			<p class="text-center text-muted card-text display-4">$ {{ Number(product.price).toFixed() }}</p>
-			<button @click="$emit('add-to-cart', product)" class="btn btn-primary form-contol">Add to card</button>
+			<button :disabled="IsInCart" @click="$emit('add-to-cart', product)" class="btn btn-primary form-control">
+			{{ IsInCart ? 'Added to Cart' : 'Add to card'}}
+			</button>
 		</div>
 	</div>
 
@@ -17,7 +19,7 @@
 	
 	export default {
 
-		props: ['product']
+		props: ['product', 'IsInCart']
 
 	}
 </script>
